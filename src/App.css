@@ -1,3 +1,114 @@
+.wrapper {
+  font-family: Helvetica;
+  color: #5b5b5b;
+}
+
+body {
+  margin: 0;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: 130px auto;
+  border-bottom: 1px solid #c4c4c4;
+}
+
+img {
+  width: 100px;
+  margin: 7.5px 0px 5px 10px;
+}
+
+/* form {
+  display: inline;
+  
+} */
+
+.input-bar {
+  width: 400px;
+  height: 38px;
+  border-radius: 30px;
+  border-style: solid;
+  border-width: thin;
+  margin: 5px 20px 5px 0px;
+  border-color: #c4c4c4;
+  color: #5b5b5b;
+  padding: 0 0 0 0;
+}
+
+.search-button {
+  height: 40px;
+  width: 100px;
+  border-radius: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+button {
+  background-color: #4285f3;
+  color: white;
+  border-color: #1a5fd0;
+  padding: 0;
+}
+
+button:hover {
+  background-color: #5998ff;
+}
+
+.all-results {
+  margin-left: 140px;
+}
+
+.number-of-results {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.results {
+  width: 700px;
+  margin-bottom: 30px;
+}
+
+/* Font size of paragraphs, results website, and number of results: 14px */
+p,
+span,
+.number-of-results {
+  font-size: 14px;
+}
+
+p {
+  margin: 5px 0 5px 0;
+}
+/* Font size of headings: 24px */
+h2 {
+  font-size: 24px;
+  margin: 5px 0 5px 0;
+  font-weight: normal;
+}
+/* List items contain smaller links. Font size of smaller links: 12px */
+li {
+  display: inline;
+  margin-right: 10px;
+  font-size: 12px;
+}
+
+ul {
+  margin: 5px 0 5px 0;
+  padding-inline-start: 5px;
+}
+/* Link color */
+a {
+  color: #1a0dab;
+}
+/* remove underline from h3 */
+h2 > a:link {
+  text-decoration: none;
+}
+
+/* change color of visited link */
+a:visited {
+  color: #660099;
+}
+
 .App {
   text-align: center;
 }
