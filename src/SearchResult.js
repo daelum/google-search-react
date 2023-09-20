@@ -1,26 +1,23 @@
-function SearchResult() {
+function SearchResult({ data }) {
+  // const { title, description, url, links } = props
+
   return (
     <div class="results">
       <span>
-        <small>www.bing.com</small>
+        <small>{data[0].url}</small>
       </span>
       <h2>
-        <a href="https://www.bing.com" target="_blank">
-          JavaScript tutorial - w3Shool
+        <a href={data[0].url} target="_blank">
+          {data[0].title}
         </a>
       </h2>
-      <p>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem,
-        deleniti delectus possimus sapiente doloribus laboriosam alias dolor.
-        Officiis, magni! Temporibus deserunt molestias nobis modi eius
-        consequatur. Aut quae obcaecati repellat.
-      </p>
+      <p>{data[0].description}</p>
       <ul>
         <li>
-          <a href="haikuacademy.com">basdbbr intro</a>
+          <a href={data[0].links[0].url}>{data[0].links[0].title}</a>
         </li>
         <li>
-          <a href="jdbhgkjbgfew.net"> kjgherjgb school</a>
+          <a href={data[0].links[1].url}>{data[0].links[1].title}</a>
         </li>
         <li>
           <a href="fbwgeouf.org">kjwbubeq video</a>
