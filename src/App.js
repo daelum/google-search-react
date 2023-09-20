@@ -68,6 +68,16 @@ function App() {
   ]
 
   // const [name, setName] = useState('')
+  // In the App component, create a search function,
+  //  that takes a string parameter
+  //  then returns an array from the data array
+  //  that contains only results where the string parameter can be found
+  //  in either the title, description or url of the element.
+  //  Test the function with a variety of strings.
+  // function search(str) {
+  //   let filteredData = data.filter(d => (typeof d == 'string'))
+  //   return filteredData
+  // }
 
   return (
     <div class="wrapper">
