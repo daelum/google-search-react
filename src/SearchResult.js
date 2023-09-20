@@ -29,3 +29,5 @@ function SearchResult() {
     </div>
   )
 }
+
+export default SearchResult
