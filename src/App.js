@@ -36,7 +36,7 @@ function App() {
       ],
     },
     {
-      title: 'JS tutorials',
+      title: 'JS tutorials fhdhgfh',
       description: 'The best JavaScript tutorials in the galaxy!',
       url: 'https://www.w3schools.com',
       links: [
@@ -79,15 +79,52 @@ function App() {
   //   return filteredData
   // }
 
+  // function search(str) {
+  //   let emptyArr = []
+  //   // check if the string matches any string inside the data array containing objects
+  //   for (x of data) {
+  //     if (
+  //       x.title.includes(str) ||
+  //       x.url.includes(str) ||
+  //       x.description.includes(str)
+  //     ) {
+  //       emptyArr += x
+  //     }
+  //   }
+  //   console.log(emptyArr)
+  // }
+  // search('fhdhgfh')
+  // In the search function, instead of returning the filtered array, use the filtered array to update the content of the results array.
+  const [results, setResults] = useState([])
+
+  function search(str, e) {
+    e.preventDefault()
+    setResults(
+      data.filter(
+        (e) =>
+          e.title.includes(str) ||
+          e.url.includes(str) ||
+          e.description.includes(str)
+      )
+    )
+  }
+
+  const [searchTerm, setSearchTerm] = useState('')
+
   return (
     <div className="wrapper">
       <div className="header">
         <div className="logo">
           <img src="images/google.png" alt="Google Logo" />
         </div>
-        <form>
+        <form onSubmit={(e) => search(searchTerm, e)}>
           {/* <!-- We need both tags next to each other to avoid the extra space --> */}
-          <input type="text" className="input-bar" id="inputText" />
+          <input
+            onKeyUp={(e) => setSearchTerm(e.target.value)}
+            type="text"
+            className="input-bar"
+            id="inputText"
+          />
           <button className="search-button">Search</button>
         </form>
       </div>
@@ -95,10 +132,10 @@ function App() {
         <div className="number-of-results">
           <span>
             {/* Replace the hardcoded number of results with the length of the array. */}
-            <small>{data.length} Results</small>
+            <small>{results.length} Results</small>
           </span>
         </div>
-        <SearchResult data={data} />
+        <SearchResult results={results} />
       </div>
     </div>
   )
