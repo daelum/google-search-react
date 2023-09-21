@@ -1,12 +1,12 @@
 import SearchResultLinks from './SearchResultLinks'
 
-function SearchResult({ data }) {
+function SearchResult({ results }) {
   // const { title, description, url, links } = props
 
   return (
     <>
       <div className="results">
-        {data.map((result, i) => (
+        {results.map((result, i) => (
           <div key={i}>
             <span>
               <small>{result.url}</small>
