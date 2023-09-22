@@ -102,9 +102,9 @@ function App() {
     setResults(
       data.filter(
         (e) =>
-          e.title.includes(str) ||
-          e.url.includes(str) ||
-          e.description.includes(str)
+          e.title.toLocaleLowerCase().includes(str) ||
+          e.url.toLocaleLowerCase().includes(str) ||
+          e.description.toLocaleLowerCase().includes(str)
       )
     )
   }
