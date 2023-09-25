@@ -2,111 +2,32 @@ import logo from './logo.svg'
 import './App.css'
 import { useState } from 'react'
 import SearchResult from './SearchResult'
+import axios from 'axios'
 
 function App() {
-  let data = [
-    {
-      title: 'JS tutorisdals',
-      description: 'The best JavaScript tutorials in the galaxy!',
-      url: 'https://www.w3schools.com',
-      links: [
-        {
-          title: 'JS for Beginners',
-          url: 'https://www.w3schools.com/js',
-        },
-        {
-          title: 'JS for the Web',
-          url: 'https://www.w3schools.com/js',
-        },
-      ],
-    },
-    {
-      title: 'JS tutorials',
-      description: 'The best JavaScript tutorials in the galaxy!',
-      url: 'https://www.w3schools.com',
-      links: [
-        {
-          title: 'JS for Beginners',
-          url: 'https://www.w3schools.com/js',
-        },
-        {
-          title: 'JS for the Web',
-          url: 'https://www.w3schools.com/js',
-        },
-      ],
-    },
-    {
-      title: 'JS tutorials fhdhgfh',
-      description: 'The best JavaScript tutorials in the galaxy!',
-      url: 'https://www.w3schools.com',
-      links: [
-        {
-          title: 'JS for Beginners',
-          url: 'https://www.w3schools.com/js',
-        },
-        {
-          title: 'JS for the Web',
-          url: 'https://www.w3schools.com/js',
-        },
-      ],
-    },
-    {
-      title: 'JS tutoriaaaals',
-      description: 'The best JavaScript tutorials in the galaxy!',
-      url: 'https://www.w3schools.com',
-      links: [
-        {
-          title: 'JS for Beginners',
-          url: 'https://www.w3schools.com/js',
-        },
-        {
-          title: 'JS for the Web',
-          url: 'https://www.w3schools.com/js',
-        },
-      ],
-    },
-  ]
+  const [dataArray, setDataArray] = useState([])
 
-  // const [name, setName] = useState('')
-  // In the App component, create a search function,
-  //  that takes a string parameter
-  //  then returns an array from the data array
-  //  that contains only results where the string parameter can be found
-  //  in either the title, description or url of the element.
-  //  Test the function with a variety of strings.
-  // function search(str) {
-  //   let filteredData = data.filter(d => (typeof d == 'string'))
-  //   return filteredData
-  // }
-
-  // function search(str) {
-  //   let emptyArr = []
-  //   // check if the string matches any string inside the data array containing objects
-  //   for (x of data) {
-  //     if (
-  //       x.title.includes(str) ||
-  //       x.url.includes(str) ||
-  //       x.description.includes(str)
-  //     ) {
-  //       emptyArr += x
-  //     }
-  //   }
-  //   console.log(emptyArr)
-  // }
-  // search('fhdhgfh')
-  // In the search function, instead of returning the filtered array, use the filtered array to update the content of the results array.
   const [results, setResults] = useState([])
 
-  function search(str, e) {
+  async function search(str, e) {
     e.preventDefault()
-    setResults(
-      data.filter(
-        (e) =>
-          e.title.toLocaleLowerCase().includes(str) ||
-          e.url.toLocaleLowerCase().includes(str) ||
-          e.description.toLocaleLowerCase().includes(str)
+    try {
+      const response = await axios.get(
+        'https://project-google-search-api-demo.herokuapp.com/results',
+        { params: { search: searchTerm } }
       )
-    )
+      console.log(response.data)
+      setResults(
+        response.data.filter(
+          (e) =>
+            e.title.toLocaleLowerCase().includes(str) ||
+            e.url.toLocaleLowerCase().includes(str) ||
+            e.description.toLocaleLowerCase().includes(str)
+        )
+      )
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   const [searchTerm, setSearchTerm] = useState('')
