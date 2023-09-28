@@ -1,11 +1,12 @@
 function SearchResultLinks({ links }) {
   return (
     <ul>
-      {links.map((link, j) => (
-        <li key={j}>
-          <a href={link.url}>{link.title}</a>
-        </li>
-      ))}
+      {links &&
+        links.map((link, j) => (
+          <li key={j}>
+            <a href={link.url}>{link.title}</a>
+          </li>
+        ))}
     </ul>
   )
 }
