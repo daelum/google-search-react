@@ -5,26 +5,18 @@ import SearchResult from './SearchResult'
 import axios from 'axios'
 
 function App() {
-  const [dataArray, setDataArray] = useState([])
+  // const [dataArray, setDataArray] = useState([])
 
   const [results, setResults] = useState([])
 
-  async function search(str, e) {
+  const search = async (str, e) => {
     e.preventDefault()
     try {
-      const response = await axios.get(
-        'https://project-google-search-api-demo.herokuapp.com/results',
-        { params: { search: searchTerm } }
-      )
+      const response = await axios.get('http://localhost:4000/results', {
+        params: { search: searchTerm },
+      })
       console.log(response.data)
-      setResults(
-        response.data.filter(
-          (e) =>
-            e.title.toLocaleLowerCase().includes(str) ||
-            e.url.toLocaleLowerCase().includes(str) ||
-            e.description.toLocaleLowerCase().includes(str)
-        )
-      )
+      setResults(response.data)
     } catch (err) {
       console.log(err)
     }
